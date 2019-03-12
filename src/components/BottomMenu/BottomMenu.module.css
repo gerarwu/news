@@ -1,0 +1,27 @@
+.Menu{
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #333;
+}
+
+.Menu ul{
+    padding: 0;
+    margin: 0;
+    line-height: 4em;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+}
+
+.Menu a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.Menu .active{    
+    box-shadow: 0 2px 0px #fff;
+}
+

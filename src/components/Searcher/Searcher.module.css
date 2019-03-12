@@ -1,0 +1,24 @@
+.Searcher{
+    text-align: center;
+}
+
+.Searcher input{
+    box-sizing: border-box;
+    border: 0;
+    height: 2em;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    color: #555;
+    padding: 0 10px;
+}
+
+.Searcher button {
+    border: 0;
+    height: 2em;
+    background-color: #eee;
+}
+
+.Searcher button:active{
+    background-color:#aaa;
+}
