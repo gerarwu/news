@@ -4,12 +4,14 @@ import classes from './TimeLineNews.module.css';
 import axios from '../../config/axios';
 
 import New from '../New/New';
+import Preview from '../Preview/Preview';
 
 
 class TimeLineNews extends React.Component{
 
     state= {
-        news: []
+        news: [],        
+        newSelected: undefined,
     }
 
     constructor(props){
@@ -24,15 +26,33 @@ class TimeLineNews extends React.Component{
         })
     }
 
+    onclickedHandlerShowNewDetail(newSelected){             
+        this.setState({newSelected: newSelected});
+    }
+
+    handlerClosePreview = () => {
+        this.setState({newSelected: undefined});
+    }
+
     render(){
         const news = this.state.news.map( (n) => {            
-            return (<New title={n.title} description={n.description} urlImage={n.urlToImage}  key={n.title} />);
+            return (<New 
+                title={n.title} 
+                description={n.description} 
+                urlImage={n.urlToImage}  
+                key={n.title} 
+                onclicked={() => this.onclickedHandlerShowNewDetail(n)}/>
+            );
         });
-
-        return(
-            <React.Fragment>
-               {news}
-            </React.Fragment>
+        
+        return(               
+            <div className={classes.TimeLineNews}>            
+                <Preview                         
+                        new={this.state.newSelected}                     
+                        clickedClosePreview={this.handlerClosePreview}
+                />
+                {news}
+            </div>
         );
     }
 

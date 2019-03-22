@@ -1,16 +1,15 @@
 import React from 'react';
 import classes from './New.module.css';
+import Img from '../../UI/Img/Img';
 
 const New = (props) => {
     return (
-        <article className={classes.New}> 
+        <article className={classes.New} onClick={props.onclicked} > 
             <h1>{props.title}</h1>
             <div className={classes.Description}>
                 {props.description}
-            </div>
-            <div className={classes.Image}>
-                <img alt={props.title} src={props.urlImage} />
-            </div>
+            </div>            
+            <Img alt={props.title} src={props.urlImage} />            
         </article>
     );
 }

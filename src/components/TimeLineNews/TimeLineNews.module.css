@@ -1,3 +1,9 @@
-.TimeLineNews{
-    
+.TimeLineNews{    
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
 }
+
+.TimeLineNews > * {
+    grid-column: 2 / 24;
+}
+
