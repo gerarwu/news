@@ -14,7 +14,11 @@ const Preview = (props) => {
         content = (
                 <div className={classes.Content}>
                     <h1>{props.new.title}</h1>  
-                    <p className={classes.ExternalLink}><a href={props.new.url} target='_blank'>Leer noticia completa en sitio.</a></p> 
+                    <p className={classes.ExternalLink}>
+                        <a href={props.new.url} target='_blank' rel='noopener noreferrer'>
+                            Leer noticia completa en sitio.
+                        </a>
+                    </p> 
                     <p>{props.new.description}</p>
                     <Img alt={props.new.title} src={props.new.urlToImage} />
                     <p>{props.new.content}</p>      
