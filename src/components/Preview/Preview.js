@@ -12,13 +12,14 @@ const Preview = (props) => {
         classesArray.push(classes.show);        
         document.body.style.overflow = 'hidden';
         content = (
-                <React.Fragment>
+                <div className={classes.Content}>
                     <h1>{props.new.title}</h1>  
+                    <p className={classes.ExternalLink}><a href={props.new.url} target='_blank'>Leer noticia completa en sitio.</a></p> 
                     <p>{props.new.description}</p>
                     <Img alt={props.new.title} src={props.new.urlToImage} />
                     <p>{props.new.content}</p>      
-                    <button onClick={props.clickedClosePreview}>Cerrar</button>
-                </React.Fragment>          
+                    <button onClick={props.clickedClosePreview}>Cerrar</button>                    
+                </div>          
             )
     }else{
         document.body.style.overflow = 'auto';

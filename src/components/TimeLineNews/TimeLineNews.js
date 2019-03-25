@@ -35,12 +35,14 @@ class TimeLineNews extends React.Component{
     }
 
     render(){
-        const news = this.state.news.map( (n) => {            
+        const news = this.state.news.map( (n) => {      
+            console.log(n)      ;
             return (<New 
                 title={n.title} 
-                description={n.description} 
+                description={n.description}                 
                 urlImage={n.urlToImage}  
                 key={n.title} 
+                data={n}
                 onclicked={() => this.onclickedHandlerShowNewDetail(n)}/>
             );
         });

@@ -9,7 +9,7 @@ const New = (props) => {
             <div className={classes.Description}>
                 {props.description}
             </div>            
-            <Img alt={props.title} src={props.urlImage} />            
+            <Img alt={props.title} src={props.urlImage} />                   
         </article>
     );
 }
