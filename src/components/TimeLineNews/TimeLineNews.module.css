@@ -26,3 +26,16 @@
     }
 }
 
+/***/
+
+.ProgressBar{
+    --widthBar: 0;
+    position: fixed;
+    height: .4em;   
+    left: 0;
+    background-color:  rgb(240, 99, 99);;    
+    width: calc(var(--widthBar) * 1vw);
+}
+
+
+

@@ -14,6 +14,8 @@ class TimeLineNews extends React.Component{
         newSelected: undefined,
     }
 
+    progressBarReference = React.createRef();
+
     constructor(props){
         super(props);
     }
@@ -23,7 +25,14 @@ class TimeLineNews extends React.Component{
             if(res.data && res.data.articles){
                 this.setState({news: [...res.data.articles]});
             }            
-        })
+        });        
+        
+        document.addEventListener('scroll', (e)=>{                                    
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;            
+            const unit = (scrollHeight-clientHeight) / 100;            
+            this.progressBarReference.current.style.setProperty('--widthBar', Math.round(window.scrollY / unit), null);
+        });
     }
 
     onclickedHandlerShowNewDetail(newSelected){             
@@ -35,8 +44,7 @@ class TimeLineNews extends React.Component{
     }
 
     render(){
-        const news = this.state.news.map( (n) => {      
-            console.log(n)      ;
+        const news = this.state.news.map( (n) => {                  
             return (<New 
                 title={n.title} 
                 description={n.description}                 
@@ -48,7 +56,8 @@ class TimeLineNews extends React.Component{
         });
         
         return(               
-            <div className={classes.TimeLineNews}>            
+            <div className={classes.TimeLineNews}>      
+                <div className={classes.ProgressBar} ref={this.progressBarReference}> </div>      
                 <Preview                         
                         new={this.state.newSelected}                     
                         clickedClosePreview={this.handlerClosePreview}
