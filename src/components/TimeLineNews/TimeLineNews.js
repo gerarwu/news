@@ -5,6 +5,7 @@ import axios from '../../config/axios';
 
 import New from '../New/New';
 import Preview from '../Preview/Preview';
+import ProgressBar from '../../UI/ProgressBar/ProgressBar';
 
 
 class TimeLineNews extends React.Component{
@@ -13,8 +14,6 @@ class TimeLineNews extends React.Component{
         news: [],        
         newSelected: undefined,
     }
-
-    progressBarReference = React.createRef();
 
     constructor(props){
         super(props);
@@ -26,13 +25,6 @@ class TimeLineNews extends React.Component{
                 this.setState({news: [...res.data.articles]});
             }            
         });        
-        
-        document.addEventListener('scroll', (e)=>{                                    
-            const scrollHeight = document.documentElement.scrollHeight;
-            const clientHeight = document.documentElement.clientHeight;            
-            const unit = (scrollHeight-clientHeight) / 100;            
-            this.progressBarReference.current.style.setProperty('--widthBar', Math.round(window.scrollY / unit), null);
-        });
     }
 
     onclickedHandlerShowNewDetail(newSelected){             
@@ -57,7 +49,7 @@ class TimeLineNews extends React.Component{
         
         return(               
             <div className={classes.TimeLineNews}>      
-                <div className={classes.ProgressBar} ref={this.progressBarReference}> </div>      
+                <ProgressBar/>
                 <Preview                         
                         new={this.state.newSelected}                     
                         clickedClosePreview={this.handlerClosePreview}

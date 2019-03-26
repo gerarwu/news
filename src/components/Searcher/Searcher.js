@@ -3,6 +3,7 @@ import classes from './Searcher.module.css';
 
 import axios from '../../config/axios';
 import New from '../New/New';
+import ProgressBar from '../../UI/ProgressBar/ProgressBar';
 
 
 class General extends React.Component {
@@ -50,7 +51,8 @@ class General extends React.Component {
 
         return (            
             <div>
-                <div className={classes.Searcher}>
+                <ProgressBar/>
+                <div className={classes.Searcher}>                    
                     <p><input ref={this.searcher} placeholder='Search..' /></p>
                     <p><button onClick={this.onclick}>Search</button></p>                
                     {spinner}                    

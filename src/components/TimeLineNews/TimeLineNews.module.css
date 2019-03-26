@@ -2,7 +2,8 @@
     margin: 0 1em;    
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-auto-flow: dense;    
+    grid-auto-flow: dense; 
+    padding-bottom: 4em;   
 }
 
 @media screen  and (min-width: 600px){
@@ -26,16 +27,6 @@
     }
 }
 
-/***/
-
-.ProgressBar{
-    --widthBar: 0;
-    position: fixed;
-    height: .4em;   
-    left: 0;
-    background-color:  rgb(240, 99, 99);;    
-    width: calc(var(--widthBar) * 1vw);
-}
 
 
 

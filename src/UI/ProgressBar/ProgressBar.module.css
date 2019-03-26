@@ -1,0 +1,9 @@
+.ProgressBar{
+    --widthBar: 0;
+    position: fixed;
+    height: .3em;   
+    left: 0;
+    top: 0;
+    background-color:  rgb(240, 99, 99);;    
+    width: calc(var(--widthBar) * 1vw);
+}
