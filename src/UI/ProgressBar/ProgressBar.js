@@ -16,9 +16,8 @@ class ProgressBar extends React.Component {
     }
 
     scrollHandler = () => {
-        const scrollHeight = document.documentElement.scrollHeight;
-        const clientHeight = document.documentElement.clientHeight;            
-        const unit = (scrollHeight-clientHeight) / 100;            
+        const { scrollHeight, clientHeight } = document.documentElement;                  
+        const unit = (scrollHeight-clientHeight) / 100;
         this.progressBarReference.current.style.setProperty('--widthBar', Math.round(window.scrollY / unit), null);
     }
 
