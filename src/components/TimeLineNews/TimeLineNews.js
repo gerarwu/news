@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './TimeLineNews.module.css';
 
 import axios from '../../config/axios';
@@ -8,7 +8,7 @@ import Preview from '../Preview/Preview';
 import ProgressBar from '../../UI/ProgressBar/ProgressBar';
 
 
-class TimeLineNews extends React.Component{
+/*class TimeLineNews extends React.Component{
 
     state= {
         news: [],        
@@ -35,8 +35,8 @@ class TimeLineNews extends React.Component{
         this.setState({newSelected: undefined});
     }
 
-    render(){
-        const news = this.state.news.map( (n) => {                  
+    getFormatedNews(news) {
+        return news.map( (n) => {                  
             return (<New 
                 title={n.title} 
                 description={n.description}                 
@@ -46,7 +46,9 @@ class TimeLineNews extends React.Component{
                 onclicked={() => this.onclickedHandlerShowNewDetail(n)}/>
             );
         });
-        
+    }
+
+    render() {        
         return(               
             <div className={classes.TimeLineNews}>      
                 <ProgressBar/>
@@ -54,11 +56,43 @@ class TimeLineNews extends React.Component{
                         new={this.state.newSelected}                     
                         clickedClosePreview={this.handlerClosePreview}
                 />
-                {news}
+                {this.getFormatedNews(this.state.news)}
             </div>
         );
     }
 
+}*/
+
+const getFormatedNews = news => {
+    return news.map( (n) => {                  
+        return (<New 
+            title={n.title} 
+            description={n.description}                 
+            urlImage={n.urlToImage}  
+            key={n.title} 
+            data={n}
+            onclicked={() => console.log('hi')}/>
+        );
+    });
 }
 
-export default TimeLineNews;
+const TimeLineNewsR = () => {
+    const [news, setNews] = useState([])
+    
+    React.useEffect(async ()=> {
+        const res = await axios.get('/v2/top-headlines?country=mx')
+        setNews([...res.data.articles]);
+    }, [])
+
+    return <div className={classes.TimeLineNews}>      
+        <ProgressBar/>
+        <Preview                         
+                new={null}                     
+                clickedClosePreview={console.log('hi 2')}
+        />
+        {getFormatedNews(news)}
+    </div>
+    
+}
+
+export default TimeLineNewsR;
