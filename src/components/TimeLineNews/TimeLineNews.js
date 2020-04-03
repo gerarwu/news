@@ -1,28 +1,40 @@
 import React, {useState} from 'react';
 import classes from './TimeLineNews.module.css';
 
-import axios from '../../config/axios';
+import {getHeadLines} from '../../services/services'
 
 import New from '../New/New';
 import Preview from '../Preview/Preview';
 import ProgressBar from '../../UI/ProgressBar/ProgressBar';
 
+import useFetch from '../../services/useFetch'
+
 const TimeLineNews = () => {
-    const [news, setNews] = useState([])
+    //const [news, setNews] = useState([])
     const [newSelected, setNewSelected] = useState()
+    const {data, loading} = useFetch('us')
+
     
-    React.useEffect(()=> {
-        const getData = async () => {
-            const res = await axios.get('/v2/top-headlines?country=us')
-            setNews([...res.data.articles])
+    // React.useEffect(()=> {
+    //     const getData = async () => {
+    //         const res = await getHeadLines('us')
+    //         setNews([...res.data.articles])
+    //     }
+    //     getData()
+    // },[setNews])
+
+    React.useEffect(() => {
+        if(newSelected){
+            document.querySelector('body').setAttribute('style', 'overflow: hidden')
+        }else{
+            document.querySelector('body').setAttribute('style', 'overflow: auto')
         }
-        getData()
-    },[])
+    }, [newSelected])
 
     return <div className={classes.TimeLineNews}>      
         <ProgressBar/>
         {
-            news.map((n, i) => <New key={i} content={n} onclicked={() => setNewSelected(n)}/>)
+            data.map((n, i) => <New key={i} content={n} onclicked={() => setNewSelected(n)}/>)
         }        
 
         {

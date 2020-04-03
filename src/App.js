@@ -13,11 +13,11 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path='/general' component={Searcher} />
-          <Route path='/headlines'  component={TimeLineNews} />
+          <Route path='/timeline'  component={TimeLineNews} />
           <Route path='/'  component={TimeLineNews} />
         </Switch>
 
-        <BottomMenu/>
+        {/*<BottomMenu/>*/}
       </div>
     );
   }
