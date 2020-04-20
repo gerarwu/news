@@ -12,8 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route path='/general' component={Searcher} />
-          <Route path='/timeline'  component={TimeLineNews} />
+          <Route path='/searcher' component={Searcher} />
           <Route path='/'  component={TimeLineNews} />
         </Switch>
 

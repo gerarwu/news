@@ -3,3 +3,31 @@
   margin: 0 auto;
 }
 
+/*Utilities grid sistem*/
+
+.General-grid{        
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-flow: dense; 
+  grid-gap: 2em;
+  padding-bottom: 4em;   
+}
+
+@media screen  and (min-width: 600px){
+  .General-grid{
+      grid-template-columns: repeat(2, 1fr);        
+  }
+}
+
+@media screen  and (min-width: 800px){
+  .General-grid{
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen  and (min-width: 1000px){
+  .General-grid{
+      grid-template-columns: repeat(3, 1fr);
+  }
+}

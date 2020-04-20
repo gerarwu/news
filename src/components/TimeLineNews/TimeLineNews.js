@@ -12,7 +12,7 @@ import useFetch from '../../services/useFetch'
 const TimeLineNews = () => {
     console.log('TimeLine')
     const [newSelected, setNewSelected] = useState()
-    const {data, loading} = useFetch('us')
+    const {data} = useFetch('/v2/top-headlines?country=us')
     const body = useBody()
 
     React.useEffect(() => {
@@ -28,15 +28,12 @@ const TimeLineNews = () => {
         setNewSelected(content)
     }, [setNewSelected])
 
-    return <div className={classes.TimeLineNews}>      
+    return <div className='General-grid'>      
         <ProgressBar/>
-        {
-            data.map((n, i) => <New key={i} content={n} onclicked={selected}/>)
-        }        
+        
+        { data.map((n, i) => <New key={i} content={n} onclicked={selected}/>) }        
 
-        {
-            newSelected && <Preview new={newSelected} clickedClosePreview={() => setNewSelected(null)} /> 
-        }
+        { newSelected && <Preview new={newSelected} clickedClosePreview={() => setNewSelected(null)} /> }
     </div>
     
 }

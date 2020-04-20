@@ -1,8 +1,9 @@
 import React from 'react';
 import classes from './New.module.css';
 import Img from '../../UI/Img/Img';
+import noop from 'lodash/noop'
 
-export const New = React.memo(({content, onclicked}) => {
+export const New = React.memo(({content, onclicked = noop}) => {
     console.log('New')
     return <article className={classes.New} onClick={() => onclicked(content)} > 
         <Img alt={content.title} src={content.urlToImage} />
@@ -10,4 +11,4 @@ export const New = React.memo(({content, onclicked}) => {
     </article>
 })
 
-export default New;
+export default New

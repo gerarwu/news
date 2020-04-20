@@ -1,19 +1,19 @@
 import React from 'react'
 import {getHeadLines} from '../services/services'
 
-const useFetch = (country) => {
+const useFetch = (url) => {
 
-    let [news, setNews] = React.useState({data: [], loading: true})
+    let [response, setResponse] = React.useState({data: [], loading: true})
 
     React.useEffect(()=> {
         const getData = async () => {
-            const res = await getHeadLines(country)
-            setNews({data:[...res.data.articles], loading: false})
+            const res = await getHeadLines(url)
+            setResponse({data:[...res.data.articles], loading: false})
         }
-        getData()
-    },[country])
+        url && getData()
+    },[url])
 
-    return news
+    return response
 }
 
 export default useFetch

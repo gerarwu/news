@@ -1,12 +1,13 @@
 import React from 'react';
 import classes from './Searcher.module.css';
+import useFetch from '../../services/useFetch'
 
 import axios from '../../config/axios';
 import New from '../New/New';
 import ProgressBar from '../../UI/ProgressBar/ProgressBar';
 
 
-class General extends React.Component {
+/*class General extends React.Component {
 
     searcher = React.createRef();
     state = {
@@ -61,6 +62,37 @@ class General extends React.Component {
             </div>
         );
     }
+}*/
+
+const Searcher = () => {
+
+    const [searchValue, setSearchValue] = React.useState('')
+    const [searchUrl, setSearchUrl] = React.useState('')
+    const [isSearching, setIsSearching] = React.useState(false)
+    const {data} =  useFetch(searchUrl)
+
+    React.useEffect(() => {
+        if(isSearching){
+            setSearchUrl(`/v2/everything?q=${searchValue}`)
+            setIsSearching(false)
+        }else{
+            setSearchUrl('')
+        }
+    }, [searchValue, isSearching])
+
+    return <div className={classes.Searcher}>
+        <input type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+
+        <button onClick={() => setIsSearching(true)} disabled={isSearching || searchValue.trim().length == 0}>
+            { isSearching ? 'Searching...' : 'Search'}
+        </button>
+    
+        <div className='General-grid'>
+            {
+                data.map((n, i) =>  <New content={n}  key={i}  />)
+            }
+        </div>
+    </div>
 }
 
-export default General;
+export default Searcher;

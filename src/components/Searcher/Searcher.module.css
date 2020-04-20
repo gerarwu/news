@@ -1,5 +1,6 @@
 .Searcher{
     text-align: center;
+    margin-top: 1rem;
 }
 
 .Searcher input{
@@ -11,12 +12,16 @@
     border-radius: 5px;
     color: #555;
     padding: 0 10px;
+    margin-bottom: .5rem;
 }
 
 .Searcher button {
     border: 0;
     height: 2em;
     background-color: #eee;
+    display: block;
+    margin: 0 auto;
+    
 }
 
 .Searcher button:active{
