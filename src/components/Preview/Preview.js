@@ -2,8 +2,11 @@ import React from 'react';
 import classes from './Preview.module.css';
 
 import Img from '../../UI/Img/Img';
+import useRenderCount from '../../utils/useRenderCount'
+
 
 const Preview = (props) => {
+    useRenderCount('Preview')
     let classesArray = [classes.Preview];    
     classesArray.push(classes.show); 
     return (
@@ -18,7 +21,7 @@ const Preview = (props) => {
                 <p>{props.new.description}</p>
                 <Img alt={props.new.title} src={props.new.urlToImage} />
                 <p>{props.new.content}</p>      
-                <button onClick={props.clickedClosePreview}>Cerrar</button>                    
+                <button onClick={props.clickedClosePreview}>Close</button>                    
             </div>
         </div>
     );

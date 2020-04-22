@@ -11,12 +11,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className='TopBar'>
+          Top bar
+        </div>
         <Switch>
           <Route path='/searcher' component={Searcher} />
           <Route path='/'  component={TimeLineNews} />
         </Switch>
 
-        {/*<BottomMenu/>*/}
+        {/* <BottomMenu/> */}
       </div>
     );
   }

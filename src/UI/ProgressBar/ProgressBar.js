@@ -1,33 +1,26 @@
 import React from 'react'
 import classes from './ProgressBar.module.css';
+import useRenderCount from '../../utils/useRenderCount'
 
+const ProgressBar = () => {
+    useRenderCount('ProgressBar')
+    const progressBarReference = React.useRef()
 
-
-class ProgressBar extends React.Component {  
-
-    progressBarReference = React.createRef();
-
-    componentDidMount(){        
-        document.addEventListener('scroll', this.scrollHandler);
-    }
-
-    componentWillUnmount(){        
-        document.removeEventListener('scroll', this.scrollHandler);
-    }
-
-    scrollHandler = () => {
+    const scrollHandler = () => {
         const { scrollHeight, clientHeight } = document.documentElement;                  
         const unit = (scrollHeight-clientHeight) / 100;
-        this.progressBarReference.current.style.setProperty('--widthBar', Math.round(window.scrollY / unit), null);
+        progressBarReference.current.style.setProperty('--widthBar', Math.round(window.scrollY / unit), null);
     }
 
-    render(){
-        return(<div 
-                    className={classes.ProgressBar} 
-                    ref={this.progressBarReference}> 
-                </div>
-        );
-    }
+    React.useEffect(()=>{
+        document.addEventListener('scroll', scrollHandler);
+        return () => {
+            document.removeEventListener('scroll', scrollHandler);
+        }
+    }, [])
+
+    return <div className={classes.ProgressBar} ref={progressBarReference}> </div>
+
 }
 
 export default ProgressBar;

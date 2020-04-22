@@ -8,7 +8,7 @@ const BottomMenu = (props) => {
             <ul>
                 <li><NavLink to='/headlines' activeClassName={classes.active} >Top Headlines</NavLink></li>
                 <li><NavLink to='/general' activeClassName={classes.active}>General</NavLink></li>                
-                <li><NavLink to='/alltheworld' activeClassName={classes.active}>International</NavLink></li>
+                <li><NavLink to='/searcher' activeClassName={classes.active}>searcher</NavLink></li>
             </ul>
         </nav>
     );
