@@ -1,0 +1,11 @@
+.TopBar{
+    background-color: var(--primary-font-color);
+    color: var(--primary-background-color);
+    height: 4rem;
+    margin-bottom: 1rem;
+     
+}
+
+.ActiveLink{
+    color: red;
+}
