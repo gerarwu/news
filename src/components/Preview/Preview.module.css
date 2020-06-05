@@ -21,8 +21,8 @@
     margin: 0 1em;
 }
 
-.Content .ExternalLink a{
-    color: #ddd;
+.ExternalLink a{
+    color: var(--primary-font-color);
     font-style: italic;
 }
 

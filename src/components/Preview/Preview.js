@@ -7,8 +7,7 @@ import useRenderCount from '../../utils/useRenderCount'
 
 const Preview = (props) => {
     useRenderCount('Preview')
-    let classesArray = [classes.Preview];    
-    classesArray.push(classes.show); 
+    let classesArray = [classes.Preview, classes.show]    
     return (
         <div className={classesArray.join(' ')}  >
             <div className={classes.Content}>
